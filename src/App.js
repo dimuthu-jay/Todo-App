@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { TaskProvider } from "./context/TaskContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider>
+      <TaskProvider>
+        <div
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {/* Main content */}
+          <div style={{ flex: 1 }}>
+            <Home />
+          </div>
+          <Footer />
+        </div>
+      </TaskProvider>
+    </ThemeProvider>
   );
 }
-
-export default App;
